@@ -67,13 +67,17 @@
 {
     [super viewWillAppear:animated];
     
-    // Prepare and display center
-    [self prepareAndDisplayCenterViewControllerWithTransform:CGAffineTransformIdentity];
-    
-    if (_leftSideOpen)
-        [self openLeftSideViewControllerAnimated:NO];
-    else if (_rightSideOpen)
-        [self openRightSideViewControllerAnimated:NO];
+    // Display views and apply transforms in needed
+    if (![_centerViewController.view superview])
+    {
+        // Prepare and display center
+        [self prepareAndDisplayCenterViewControllerWithTransform:CGAffineTransformIdentity];
+        
+        if (_leftSideOpen)
+            [self openLeftSideViewControllerAnimated:NO];
+        else if (_rightSideOpen)
+            [self openRightSideViewControllerAnimated:NO];
+    }
 }
 
 #pragma mark - Public opening / closing methods
