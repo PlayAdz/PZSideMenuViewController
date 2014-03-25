@@ -3,11 +3,6 @@ Pod::Spec.new do |s|
   s.version      = "1.0.0"
   s.platform     = :ios, '7.0'
   s.summary      = "Sliding panel with nice apparition/disapparition effects"
-
-  s.description  = <<-DESC
-	  				The PZSideMenuViewController allows you to integrate a sliding panel mechanism in your projects.
-                   DESC
-
   s.homepage     = "https://github.com/PlayAdz/PZSideMenuViewController"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "cyrilchandelier" => "cyril.chandelier@gmail.com" }
