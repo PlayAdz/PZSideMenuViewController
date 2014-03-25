@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ed6-Z5-bIi">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ed6-Z5-bIi">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="100"/>
@@ -24,6 +24,12 @@
                 </label>
             </subviews>
             <color key="backgroundColor" red="0.81742267219999998" green="0.81742267219999998" blue="0.81742267219999998" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Ed6-Z5-bIi" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="IO5-nS-cP6"/>
+                <constraint firstAttribute="bottom" secondItem="Ed6-Z5-bIi" secondAttribute="bottom" id="MfQ-KY-4nS"/>
+                <constraint firstAttribute="trailing" secondItem="Ed6-Z5-bIi" secondAttribute="trailing" id="a9a-Ue-doA"/>
+                <constraint firstItem="Ed6-Z5-bIi" firstAttribute="top" secondItem="1" secondAttribute="top" id="rbX-bm-6Al"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>

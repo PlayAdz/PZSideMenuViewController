@@ -41,6 +41,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Force refresh UI
+    [self refreshUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated
