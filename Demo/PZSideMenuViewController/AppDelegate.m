@@ -7,15 +7,23 @@
 //
 
 #import "AppDelegate.h"
+#import "RootViewController.h"
+
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Root view controller
+    _rootViewController = [[RootViewController alloc] init];
+    
+    // Window
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = _rootViewController;
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

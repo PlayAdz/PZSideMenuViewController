@@ -13,4 +13,12 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import "AppDelegate.h"
+    #import "PZSideMenuViewController.h"
+    #import "RootViewController.h"
 #endif
+
+// Shortcuts
+#define APP_DELEGATE            (AppDelegate *)[[UIApplication sharedApplication] delegate]
+#define ROOT_VIEW_CONTROLLER    (RootViewController *)[APP_DELEGATE rootViewController]
+#define SIDE_MENU_CONTROLLER    ((PZSideMenuViewController *)[(RootViewController *)ROOT_VIEW_CONTROLLER sideMenuViewController])

@@ -6,10 +6,16 @@
 //  Copyright (c) 2014 PlayAdz. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@class RootViewController;
+
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+// Window
 @property (strong, nonatomic) UIWindow *window;
+
+// Root view controller
+@property (nonatomic, strong, readonly) RootViewController *rootViewController;
 
 @end
