@@ -16,6 +16,9 @@
 // Outlets
 @property (nonatomic, weak) IBOutlet UILabel *numberLabel;
 
+// View controllers
+@property (nonatomic, strong) RightViewController *rightViewController;
+
 @end
 
 
@@ -57,9 +60,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
-    // Setup right view controller
-    SIDE_MENU_CONTROLLER.rightViewController = nil;
 }
 
 - (void)refreshUI
@@ -75,6 +75,21 @@
     {
         [self refreshUI];
     }
+}
+
+#pragma mark - PZSideMenuProtocol methods
+- (void)viewWillReduceFromLeft:(NSNumber *)fromLeft
+{
+    if ([fromLeft boolValue])
+        SIDE_MENU_CONTROLLER.rightViewController = nil;
+}
+
+- (void)viewDidGrow
+{
+    if (!_rightViewController)
+        _rightViewController = [[RightViewController alloc] init];
+    
+    SIDE_MENU_CONTROLLER.rightViewController = [[RightViewController alloc] init];
 }
 
 #pragma mark - Memory

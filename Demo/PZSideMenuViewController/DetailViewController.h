@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 PlayAdz. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PZSideMenuProtocol.h"
 
 
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController <PZSideMenuProtocol>
 
 // Property
 @property (nonatomic, assign) NSInteger number;
