@@ -68,6 +68,17 @@
     _numberLabel.text = [NSString stringWithFormat:@"%d", _number];
 }
 
+#pragma mark - UI Actions
+- (IBAction)menu
+{
+    [SIDE_MENU_CONTROLLER openLeftSideViewControllerAnimated:YES];
+}
+
+- (IBAction)more
+{
+    [SIDE_MENU_CONTROLLER openRightSideViewControllerAnimated:YES];
+}
+
 #pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		005A1DFA18E4BB6E00D7F932 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 005A1DF818E4BB6E00D7F932 /* background.png */; };
+		005A1DFB18E4BB6E00D7F932 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005A1DF918E4BB6E00D7F932 /* background@2x.png */; };
 		006E7BD018E1907C005F89F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006E7BCF18E1907C005F89F8 /* Foundation.framework */; };
 		006E7BD218E1907C005F89F8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006E7BD118E1907C005F89F8 /* CoreGraphics.framework */; };
 		006E7BD418E1907C005F89F8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006E7BD318E1907C005F89F8 /* UIKit.framework */; };
@@ -27,9 +29,15 @@
 		006E7C2918E19205005F89F8 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006E7C2718E19205005F89F8 /* DetailViewController.xib */; };
 		006E7C2E18E19211005F89F8 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 006E7C2C18E19211005F89F8 /* RootViewController.m */; };
 		006E7C2F18E19211005F89F8 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006E7C2D18E19211005F89F8 /* RootViewController.xib */; };
+		00E5326A18E4B96000109EC7 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E5326818E4B96000109EC7 /* menu.png */; };
+		00E5326B18E4B96000109EC7 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E5326918E4B96000109EC7 /* menu@2x.png */; };
+		00E5326E18E4B96D00109EC7 /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E5326C18E4B96D00109EC7 /* more.png */; };
+		00E5326F18E4B96D00109EC7 /* more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E5326D18E4B96D00109EC7 /* more@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		005A1DF818E4BB6E00D7F932 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		005A1DF918E4BB6E00D7F932 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		006E7BCC18E1907C005F89F8 /* PZSideMenuViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PZSideMenuViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		006E7BCF18E1907C005F89F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		006E7BD118E1907C005F89F8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -63,6 +71,10 @@
 		006E7C2B18E19211005F89F8 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		006E7C2C18E19211005F89F8 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		006E7C2D18E19211005F89F8 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		00E5326818E4B96000109EC7 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		00E5326918E4B96000109EC7 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
+		00E5326C18E4B96D00109EC7 /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more.png; sourceTree = "<group>"; };
+		00E5326D18E4B96D00109EC7 /* more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +157,12 @@
 		006E7C0818E19162005F89F8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				005A1DF818E4BB6E00D7F932 /* background.png */,
+				005A1DF918E4BB6E00D7F932 /* background@2x.png */,
+				00E5326C18E4B96D00109EC7 /* more.png */,
+				00E5326D18E4B96D00109EC7 /* more@2x.png */,
+				00E5326818E4B96000109EC7 /* menu.png */,
+				00E5326918E4B96000109EC7 /* menu@2x.png */,
 				006E7C0918E19162005F89F8 /* Images.xcassets */,
 			);
 			name = Resources;
@@ -275,12 +293,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				005A1DFA18E4BB6E00D7F932 /* background.png in Resources */,
 				006E7BDA18E1907C005F89F8 /* InfoPlist.strings in Resources */,
 				006E7C0A18E19162005F89F8 /* Images.xcassets in Resources */,
+				00E5326A18E4B96000109EC7 /* menu.png in Resources */,
+				00E5326F18E4B96D00109EC7 /* more@2x.png in Resources */,
 				006E7C2F18E19211005F89F8 /* RootViewController.xib in Resources */,
 				006E7C2918E19205005F89F8 /* DetailViewController.xib in Resources */,
 				006E7C1518E191AA005F89F8 /* HomeViewController.xib in Resources */,
+				00E5326E18E4B96D00109EC7 /* more.png in Resources */,
+				005A1DFB18E4BB6E00D7F932 /* background@2x.png in Resources */,
 				006E7C2418E191F9005F89F8 /* RightViewController.xib in Resources */,
+				00E5326B18E4B96000109EC7 /* menu@2x.png in Resources */,
 				006E7C1F18E191F0005F89F8 /* SubmenuViewController.xib in Resources */,
 				006E7C1A18E191E7005F89F8 /* MenuViewController.xib in Resources */,
 			);
