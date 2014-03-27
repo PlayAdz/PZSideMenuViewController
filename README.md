@@ -5,6 +5,11 @@ PZSideMenuViewController
 
 The PZSideMenuViewController allows you to integrate a sliding panel mechanism in your projects
 
+![ScreenShot](https://raw.github.com/PlayAdz/PZSideMenuViewController/master/Assets/PZSideMenuViewController.gif)
+
+##Screenshots
+![ScreenShot](https://raw.github.com/PlayAdz/PZSideMenuViewController/master/Assets/leftPanel.png) - ![ScreenShot](https://raw.github.com/PlayAdz/PZSideMenuViewController/master/Assets/rightPanel.png)
+
 ##Installation
 
 There are two ways to use the library in your project:
