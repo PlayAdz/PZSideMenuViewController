@@ -8,6 +8,10 @@
 
 @interface PZSideMenuViewController : UIViewController <UIGestureRecognizerDelegate>
 
+// Constructors
+- (id)init;
+- (id)initWithCenterViewController:(UIViewController *)centerViewController;
+
 // Open / Close side view controllers
 - (void)openLeftSideViewControllerAnimated:(BOOL)animated;
 - (void)openRightSideViewControllerAnimated:(BOOL)animated;

@@ -40,18 +40,39 @@
 {
     if (self = [super init])
     {
-        // Default values
-        _zoomScale = 0.8f;
-        _edgeOffset = (UIOffset) {
-            .horizontal = 110.0f
-        };
-        _duration = kAnimationDuration;
-        _shadowColor = [UIColor blackColor];
-        _shadowRadius = 10.0f;
-        _shadowOpacity = 0.4f;
+        // Default configuration
+        [self defaultConfiguration];
     }
     
     return self;
+}
+
+- (id)initWithCenterViewController:(UIViewController *)centerViewController
+{
+    if (self = [super init])
+    {
+        // Default configuration
+        [self defaultConfiguration];
+        
+        // Hold view controller
+        self.centerViewController = centerViewController;
+    }
+    
+    return self;
+}
+
+#pragma mark - Defaults
+- (void)defaultConfiguration
+{
+    // Default values
+    _zoomScale = 0.8f;
+    _edgeOffset = (UIOffset) {
+        .horizontal = 110.0f
+    };
+    _duration = kAnimationDuration;
+    _shadowColor = [UIColor blackColor];
+    _shadowRadius = 10.0f;
+    _shadowOpacity = 0.4f;
 }
 
 #pragma mark - View management
