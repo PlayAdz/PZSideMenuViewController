@@ -20,6 +20,9 @@
 // Present center view controller
 - (void)presentCenterViewController:(UIViewController *)aViewController animated:(BOOL)animated;
 
+// Gestur recognizer
+@property (nonatomic, strong, readonly) UIPanGestureRecognizer *centerPanGestureRecognizer;
+
 // View controllers
 @property (nonatomic, strong) UIViewController *centerViewController;
 @property (nonatomic, strong) UIViewController *leftViewController;
