@@ -71,7 +71,7 @@
     _detailViewController.number = indexPath.row;
     
     // Present it
-    [SIDE_MENU_CONTROLLER presentCenterViewController:_detailViewController];
+    [SIDE_MENU_CONTROLLER presentCenterViewController:_detailViewController animated:YES];
 }
 
 #pragma mark - Memory

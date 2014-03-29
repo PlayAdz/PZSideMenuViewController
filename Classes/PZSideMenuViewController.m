@@ -153,8 +153,26 @@
                      }];
 }
 
-- (void)closeSideViewController
+- (void)closeSideViewControllerAnimated:(BOOL)animated
 {
+    void (^completionBlock)(BOOL) = ^(BOOL finished) {
+        // Remove from superview
+        [_currentSideViewController.view removeFromSuperview];
+        
+        // Remove from parent view controller
+        [_currentSideViewController removeFromParentViewController];
+        
+        // Release view controller
+        _currentSideViewController = nil;
+        
+        // Flag
+        _leftSideOpen = _rightSideOpen = NO;
+        
+        // Warn that view controller did grow
+        if ([_centerViewController conformsToProtocol:@protocol(PZSideMenuProtocol)] && [_centerViewController respondsToSelector:@selector(viewDidGrow)])
+            [_centerViewController performSelector:@selector(viewDidGrow) withObject:nil];
+    };
+    
     // Remove gesture recognizer
     [_centerTapGestureRecognizer.view removeFromSuperview];
     _centerTapGestureRecognizer = nil;
@@ -166,33 +184,31 @@
     // Add shadow
     [self removeCenterViewControllerShadow];
     
-    // Animate
-    [UIView animateWithDuration:_duration
-                          delay:0.0f
-                        options:UIViewAnimationOptionCurveEaseInOut
-                     animations:^{
-                         self.centerViewController.view.transform = CGAffineTransformIdentity;
-                     }
-                     completion:^(BOOL finished) {
-                         // Remove from superview
-                         [_currentSideViewController.view removeFromSuperview];
-                         
-                         // Remove from parent view controller
-                         [_currentSideViewController removeFromParentViewController];
-                         
-                         // Release view controller
-                         _currentSideViewController = nil;
-                         
-                         // Flag
-                         _leftSideOpen = _rightSideOpen = NO;
-                         
-                         // Warn that view controller did grow
-                         if ([_centerViewController conformsToProtocol:@protocol(PZSideMenuProtocol)] && [_centerViewController respondsToSelector:@selector(viewDidGrow)])
-                             [_centerViewController performSelector:@selector(viewDidGrow) withObject:nil];
-                     }];
+    
+    // Animable part
+    if (animated)
+    {
+        // Animate
+        [UIView animateWithDuration:_duration
+                              delay:0.0f
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             // Reset transform
+                             self.centerViewController.view.transform = CGAffineTransformIdentity;
+                         }
+                         completion:completionBlock];
+    }
+    else
+    {
+        // Reset transform
+        self.centerViewController.view.transform = CGAffineTransformIdentity;
+        
+        // Execute completion block
+        completionBlock(YES);
+    }
 }
 
-- (void)presentCenterViewController:(UIViewController *)aViewController
+- (void)presentCenterViewController:(UIViewController *)aViewController animated:(BOOL)animated
 {
     if (aViewController != _centerViewController)
     {
@@ -216,7 +232,7 @@
     }
     
     // Close side panel
-    [self closeSideViewController];
+    [self closeSideViewControllerAnimated:animated];
 }
 
 #pragma mark - Animations
@@ -292,7 +308,7 @@
         return;
     
     // Close side view controller
-    [self closeSideViewController];
+    [self closeSideViewControllerAnimated:YES];
 }
 
 - (void)movePanel:(UIPanGestureRecognizer *)sender

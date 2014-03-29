@@ -15,10 +15,10 @@
 // Open / Close side view controllers
 - (void)openLeftSideViewControllerAnimated:(BOOL)animated;
 - (void)openRightSideViewControllerAnimated:(BOOL)animated;
-- (void)closeSideViewController;
+- (void)closeSideViewControllerAnimated:(BOOL)animated;
 
 // Present center view controller
-- (void)presentCenterViewController:(UIViewController *)aViewController;
+- (void)presentCenterViewController:(UIViewController *)aViewController animated:(BOOL)animated;
 
 // View controllers
 @property (nonatomic, strong) UIViewController *centerViewController;
