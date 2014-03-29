@@ -38,7 +38,7 @@
 #pragma mark - UI Actions
 - (IBAction)openLeft
 {
-    [SIDE_MENU_CONTROLLER openLeftSideViewControllerAnimated:YES];
+    [SIDE_MENU_CONTROLLER openLeftSideViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Memory

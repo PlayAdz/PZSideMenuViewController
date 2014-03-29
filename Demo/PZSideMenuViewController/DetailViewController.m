@@ -71,12 +71,12 @@
 #pragma mark - UI Actions
 - (IBAction)menu
 {
-    [SIDE_MENU_CONTROLLER openLeftSideViewControllerAnimated:YES];
+    [SIDE_MENU_CONTROLLER openLeftSideViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)more
 {
-    [SIDE_MENU_CONTROLLER openRightSideViewControllerAnimated:YES];
+    [SIDE_MENU_CONTROLLER openRightSideViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - KVO

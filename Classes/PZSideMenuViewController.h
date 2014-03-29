@@ -13,9 +13,9 @@
 - (id)initWithCenterViewController:(UIViewController *)centerViewController;
 
 // Open / Close side view controllers
-- (void)openLeftSideViewControllerAnimated:(BOOL)animated;
-- (void)openRightSideViewControllerAnimated:(BOOL)animated;
-- (void)closeSideViewControllerAnimated:(BOOL)animated;
+- (void)openLeftSideViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completionBlock;
+- (void)openRightSideViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completionBlock;
+- (void)closeSideViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completionBlock;
 
 // Present center view controller
 - (void)presentCenterViewController:(UIViewController *)aViewController animated:(BOOL)animated;

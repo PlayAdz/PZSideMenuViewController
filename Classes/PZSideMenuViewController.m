@@ -95,24 +95,24 @@
         [self prepareAndDisplayCenterViewControllerWithTransform:CGAffineTransformIdentity];
         
         if (_leftSideOpen)
-            [self openLeftSideViewControllerAnimated:NO];
+            [self openLeftSideViewControllerAnimated:NO completion:nil];
         else if (_rightSideOpen)
-            [self openRightSideViewControllerAnimated:NO];
+            [self openRightSideViewControllerAnimated:NO completion:nil];
     }
 }
 
 #pragma mark - Public opening / closing methods
-- (void)openLeftSideViewControllerAnimated:(BOOL)animated
+- (void)openLeftSideViewControllerAnimated:(BOOL)animated completion:(void (^)(void))completionBlock
 {
-    [self openChildView:[self leftView] left:YES animated:animated];
+    [self openChildView:[self leftView] left:YES animated:animated completion:completionBlock];
 }
 
-- (void)openRightSideViewControllerAnimated:(BOOL)animated
+- (void)openRightSideViewControllerAnimated:(BOOL)animated completion:(void (^)(void))completionBlock
 {
-    [self openChildView:[self rightView] left:NO animated:animated];
+    [self openChildView:[self rightView] left:NO animated:animated completion:completionBlock];
 }
 
-- (void)openChildView:(UIView *)childView left:(BOOL)left animated:(BOOL)animated
+- (void)openChildView:(UIView *)childView left:(BOOL)left animated:(BOOL)animated completion:(void (^)(void))completionBlock
 {
     // Prevent empty view to start animation
     if (!childView)
@@ -131,31 +131,50 @@
     // Determine view controller to display
     UIViewController *viewControllerToDisplay = (left) ? self.leftViewController : self.rightViewController;
     
-    // Animate
-    [UIView animateWithDuration:_duration
-                          delay:0.0f
-                        options:UIViewAnimationOptionCurveEaseInOut
-                     animations:^{
-                         // Position
-                         viewControllerToDisplay.view.transform = CGAffineTransformIdentity;
-                         self.centerViewController.view.transform = [self openTransformForView:_centerViewController.view left:left];
-                     }
-                     completion:^(BOOL finished){
-                         // Flag
-                         if (left)
-                             _leftSideOpen = YES;
-                         else
-                             _rightSideOpen = YES;
-                         
-                         // Warn that view controller will grow
-                         if ([_centerViewController conformsToProtocol:@protocol(PZSideMenuProtocol)] && [_centerViewController respondsToSelector:@selector(viewDidReduceFromLeft:)])
-                             [_centerViewController performSelector:@selector(viewDidReduceFromLeft:) withObject:@(left)];
-                     }];
+    // Final block
+    void (^finalBlock)(BOOL) = ^(BOOL finished) {
+            // Flag
+            if (left)
+                _leftSideOpen = YES;
+            else
+                _rightSideOpen = YES;
+            
+            // Warn that view controller will grow
+            if ([_centerViewController conformsToProtocol:@protocol(PZSideMenuProtocol)] && [_centerViewController respondsToSelector:@selector(viewDidReduceFromLeft:)])
+                [_centerViewController performSelector:@selector(viewDidReduceFromLeft:) withObject:@(left)];
+            
+            // Execute completion block
+            if (completionBlock)
+                completionBlock();
+    };
+    
+    // Animable part
+    if (animated)
+    {
+        [UIView animateWithDuration:_duration
+                              delay:0.0f
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             // Position
+                             viewControllerToDisplay.view.transform = CGAffineTransformIdentity;
+                             self.centerViewController.view.transform = [self openTransformForView:_centerViewController.view left:left];
+                         }
+                         completion:finalBlock];
+    }
+    else
+    {
+        // Position
+        viewControllerToDisplay.view.transform = CGAffineTransformIdentity;
+        self.centerViewController.view.transform = [self openTransformForView:_centerViewController.view left:left];
+        
+        // Execute final block
+        finalBlock(YES);
+    }
 }
 
-- (void)closeSideViewControllerAnimated:(BOOL)animated
+- (void)closeSideViewControllerAnimated:(BOOL)animated completion:(void (^)(void))completionBlock
 {
-    void (^completionBlock)(BOOL) = ^(BOOL finished) {
+    void (^finalBlock)(BOOL) = ^(BOOL finished) {
         // Remove from superview
         [_currentSideViewController.view removeFromSuperview];
         
@@ -171,6 +190,10 @@
         // Warn that view controller did grow
         if ([_centerViewController conformsToProtocol:@protocol(PZSideMenuProtocol)] && [_centerViewController respondsToSelector:@selector(viewDidGrow)])
             [_centerViewController performSelector:@selector(viewDidGrow) withObject:nil];
+        
+        // Execute completion block
+        if (completionBlock)
+            completionBlock();
     };
     
     // Remove gesture recognizer
@@ -196,7 +219,7 @@
                              // Reset transform
                              self.centerViewController.view.transform = CGAffineTransformIdentity;
                          }
-                         completion:completionBlock];
+                         completion:finalBlock];
     }
     else
     {
@@ -204,7 +227,7 @@
         self.centerViewController.view.transform = CGAffineTransformIdentity;
         
         // Execute completion block
-        completionBlock(YES);
+        finalBlock(YES);
     }
 }
 
@@ -232,7 +255,7 @@
     }
     
     // Close side panel
-    [self closeSideViewControllerAnimated:animated];
+    [self closeSideViewControllerAnimated:animated completion:nil];
 }
 
 #pragma mark - Animations
@@ -308,7 +331,7 @@
         return;
     
     // Close side view controller
-    [self closeSideViewControllerAnimated:YES];
+    [self closeSideViewControllerAnimated:YES completion:nil];
 }
 
 - (void)movePanel:(UIPanGestureRecognizer *)sender
@@ -319,9 +342,9 @@
     if([(UIPanGestureRecognizer *)sender state] == UIGestureRecognizerStateEnded)
     {
         if(velocity.x > 0)
-            [self openLeftSideViewControllerAnimated:YES];
+            [self openLeftSideViewControllerAnimated:YES completion:nil];
         else
-            [self openRightSideViewControllerAnimated:YES];
+            [self openRightSideViewControllerAnimated:YES completion:nil];
     }
 }
 
