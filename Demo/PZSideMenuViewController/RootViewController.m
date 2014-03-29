@@ -31,8 +31,7 @@
     if (self)
     {
         // Prepare side menu view controller
-        _sideMenuViewController = [[PZSideMenuViewController alloc] init];
-        _sideMenuViewController.centerViewController = [[HomeViewController alloc] init];
+        _sideMenuViewController = [[PZSideMenuViewController alloc] initWithCenterViewController:[[HomeViewController alloc] init]];
         _sideMenuViewController.leftViewController = [[UINavigationController alloc] initWithRootViewController:[[MenuViewController alloc] init]];
     }
     
