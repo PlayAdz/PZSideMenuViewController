@@ -31,14 +31,21 @@ pod 'PZSideMenuViewController'
 Create a side menu view controller and give it at least the center view controller
 ```
 // Prepare side menu view controller
-_sideMenuViewController = [[PZSideMenuViewController alloc] init];
-_sideMenuViewController.centerViewController = [[HomeViewController alloc] init];
+_sideMenuViewController = [[PZSideMenuViewController alloc] initWithCenterViewController:[[HomeViewController alloc] init]];
 ```
 
 You can, at any moment give the side menu view controller a left and/or a right side view controller:
 ```
 _sideMenuViewController.leftViewController = [[LeftMenuViewController alloc] init];
 _sideMenuViewController.rightViewController = [[RightMenuViewController alloc] init];
+```
+
+Left and right pan gestures are automatically added to your view controllers, but you can open / close the side menu view controller programatically with the three following methods:
+```
+// Open / Close side view controllers
+- (void)openLeftSideViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completionBlock;
+- (void)openRightSideViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completionBlock;
+- (void)closeSideViewControllerAnimated:(BOOL)animated completion:(void(^)(void))completionBlock;
 ```
 
 ##Options
