@@ -235,7 +235,8 @@
 {
     if (aViewController != _centerViewController)
     {
-        CGAffineTransform transform = CGAffineTransformIdentity;
+        // Reset display view controller transform
+        CGAffineTransform transform = aViewController.view.transform = CGAffineTransformIdentity;
         
         if ([_centerViewController.view superview])
         {
