@@ -24,7 +24,7 @@
 @property (nonatomic, strong, readonly) UIPanGestureRecognizer *centerPanGestureRecognizer;
 
 // Enable swipe gesture
-@property (nonatomic, assign) BOOL isGestureEnabled;
+@property (nonatomic, assign, getter = isGestureEnabled) BOOL gestureEnabled;
 
 // View controllers
 @property (nonatomic, strong) UIViewController *centerViewController;

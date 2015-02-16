@@ -73,7 +73,7 @@
     _shadowColor = [UIColor blackColor];
     _shadowRadius = 10.0f;
     _shadowOpacity = 0.4f;
-    _isGestureEnabled = YES;
+    _gestureEnabled = YES;
 }
 
 #pragma mark - View management
@@ -408,7 +408,7 @@
 
 - (void)prepareAndDisplayCenterViewControllerWithTransform:(CGAffineTransform)transform
 {
-    if (_isGestureEnabled)
+    if (_gestureEnabled)
     {
         // Add gestures
         _centerPanGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(movePanel:)];
