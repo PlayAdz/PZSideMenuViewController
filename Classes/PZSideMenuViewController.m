@@ -73,6 +73,7 @@
     _shadowColor = [UIColor blackColor];
     _shadowRadius = 10.0f;
     _shadowOpacity = 0.4f;
+    _isGestureEnabled = YES;
 }
 
 #pragma mark - View management
