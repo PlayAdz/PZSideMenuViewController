@@ -317,9 +317,6 @@
 
 - (void)removeCenterViewControllerShadow
 {
-    // Post notification
-    [[NSNotificationCenter defaultCenter] postNotificationName:PZ_SIDE_MENU_VIEW_CONTROLLER_CLOSED_NOTIFICATION object:nil];
-    
     // Animation
     CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"shadowOpacity"];
     anim.fromValue = [NSNumber numberWithFloat:_shadowOpacity];
@@ -336,7 +333,10 @@
         return;
     
     // Close side view controller
-    [self closeSideViewControllerAnimated:YES completion:nil];
+    [self closeSideViewControllerAnimated:YES completion:^{
+        // Post closed notification
+        [[NSNotificationCenter defaultCenter] postNotificationName:PZ_SIDE_MENU_VIEW_CONTROLLER_CLOSED_NOTIFICATION object:nil];
+    }];
 }
 
 - (void)movePanel:(UIPanGestureRecognizer *)sender
