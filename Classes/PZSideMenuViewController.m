@@ -192,6 +192,9 @@
         if ([_centerViewController conformsToProtocol:@protocol(PZSideMenuProtocol)] && [_centerViewController respondsToSelector:@selector(viewDidGrow)])
             [_centerViewController performSelector:@selector(viewDidGrow) withObject:nil];
         
+        // Post did close notification
+        [[NSNotificationCenter defaultCenter] postNotificationName:PZ_SIDE_MENU_VIEW_CONTROLLER_DID_CLOSE_NOTIFICATION object:nil];
+        
         // Execute completion block
         if (completionBlock)
             completionBlock();
@@ -208,6 +211,8 @@
     // Add shadow
     [self removeCenterViewControllerShadow];
     
+    // Post will close notification
+    [[NSNotificationCenter defaultCenter] postNotificationName:PZ_SIDE_MENU_VIEW_CONTROLLER_WILL_CLOSE_NOTIFICATION object:nil];
     
     // Animable part
     if (animated)
@@ -333,10 +338,7 @@
         return;
     
     // Close side view controller
-    [self closeSideViewControllerAnimated:YES completion:^{
-        // Post closed notification
-        [[NSNotificationCenter defaultCenter] postNotificationName:PZ_SIDE_MENU_VIEW_CONTROLLER_CLOSED_NOTIFICATION object:nil];
-    }];
+    [self closeSideViewControllerAnimated:YES completion:nil];
 }
 
 - (void)movePanel:(UIPanGestureRecognizer *)sender
