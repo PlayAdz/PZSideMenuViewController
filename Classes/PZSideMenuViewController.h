@@ -7,7 +7,7 @@
 //
 
 // Notifications
-#define NOTIFICATION_CLOSE_VIEW @"NOTIFICATION_CLOSE_VIEW"
+#define PZ_SIDE_MENU_VIEW_CONTROLLER_CLOSED_NOTIFICATION @"PZ_SIDE_MENU_VIEW_CONTROLLER_CLOSED_NOTIFICATION"
 
 @interface PZSideMenuViewController : UIViewController <UIGestureRecognizerDelegate>
 

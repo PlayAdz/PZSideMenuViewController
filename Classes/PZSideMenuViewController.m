@@ -318,7 +318,7 @@
 - (void)removeCenterViewControllerShadow
 {
     // Post notification
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_CLOSE_VIEW object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:PZ_SIDE_MENU_VIEW_CONTROLLER_CLOSED_NOTIFICATION object:nil];
     
     // Animation
     CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"shadowOpacity"];
