@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Cyril Chandelier. All rights reserved.
 //
 
+// Notifications
+#define NOTIFICATION_CLOSE_VIEW @"NOTIFICATION_CLOSE_VIEW"
+
 @interface PZSideMenuViewController : UIViewController <UIGestureRecognizerDelegate>
 
 // Constructors
