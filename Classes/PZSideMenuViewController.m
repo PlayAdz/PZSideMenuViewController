@@ -407,13 +407,16 @@
 
 - (void)prepareAndDisplayCenterViewControllerWithTransform:(CGAffineTransform)transform
 {
-    // Add gestures
-    _centerPanGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(movePanel:)];
-    [_centerPanGestureRecognizer setMinimumNumberOfTouches:1];
-    [_centerPanGestureRecognizer setMaximumNumberOfTouches:1];
-    [_centerPanGestureRecognizer setDelegate:self];
-    
-    [_centerViewController.view addGestureRecognizer:_centerPanGestureRecognizer];
+    if (_isGestureEnabled)
+    {
+        // Add gestures
+        _centerPanGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(movePanel:)];
+        [_centerPanGestureRecognizer setMinimumNumberOfTouches:1];
+        [_centerPanGestureRecognizer setMaximumNumberOfTouches:1];
+        [_centerPanGestureRecognizer setDelegate:self];
+        
+        [_centerViewController.view addGestureRecognizer:_centerPanGestureRecognizer];
+    }
     
     // Add center view as subview
     [self.view addSubview:_centerViewController.view];
