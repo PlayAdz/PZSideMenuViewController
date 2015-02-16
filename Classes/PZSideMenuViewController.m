@@ -73,6 +73,7 @@
     _shadowColor = [UIColor blackColor];
     _shadowRadius = 10.0f;
     _shadowOpacity = 0.4f;
+    _gestureEnabled = YES;
 }
 
 #pragma mark - View management
@@ -407,13 +408,16 @@
 
 - (void)prepareAndDisplayCenterViewControllerWithTransform:(CGAffineTransform)transform
 {
-    // Add gestures
-    _centerPanGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(movePanel:)];
-    [_centerPanGestureRecognizer setMinimumNumberOfTouches:1];
-    [_centerPanGestureRecognizer setMaximumNumberOfTouches:1];
-    [_centerPanGestureRecognizer setDelegate:self];
-    
-    [_centerViewController.view addGestureRecognizer:_centerPanGestureRecognizer];
+    if (_gestureEnabled)
+    {
+        // Add gestures
+        _centerPanGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(movePanel:)];
+        [_centerPanGestureRecognizer setMinimumNumberOfTouches:1];
+        [_centerPanGestureRecognizer setMaximumNumberOfTouches:1];
+        [_centerPanGestureRecognizer setDelegate:self];
+        
+        [_centerViewController.view addGestureRecognizer:_centerPanGestureRecognizer];
+    }
     
     // Add center view as subview
     [self.view addSubview:_centerViewController.view];
